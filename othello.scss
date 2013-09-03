@@ -1,0 +1,118 @@
+@import 'demo.css';
+@import 'grid';
+
+
+//////////
+// GRID //
+//////////
+
+$columns: 14;
+$column-width: 60;
+$gutter-width: 20;
+$total-width: 100%;
+
+
+////////////
+// LAYOUT //
+////////////
+
+// header
+header#top {
+	margin-bottom: 1em;
+}
+
+// main column & summaries
+
+#maincolumn {
+	@include column(6);
+	@include push(3);
+}
+#summaries {
+	@include column(4);
+	@include pull (1);
+}
+
+@media screen and (max-width: 720px) {
+	#maincolumn,
+	#summaries {
+		@include column(12);
+		margin-bottom: 1em;
+	}
+}
+
+body {
+	margin: 0;
+}
+
+ol {
+	li {
+		line-height: 25px;
+
+		&:before {
+		    content: ".";
+			color: #fff;
+			font-size: 42px;
+			font-weight: bold;
+			position: relative;
+			left: -15px;
+			line-height: 1px;        
+		}
+
+		a {
+			color: darkcyan;
+			cursor: pointer;
+		}
+
+		span {
+			display: none;
+			background-color: lightcyan;
+			float: right;
+			width: 100%;
+			line-height: 29px;
+			padding-left: 10px;
+		}
+	}
+}
+
+ul {
+	list-style: none;
+}
+
+h1 {
+	margin-top: 0;
+}
+
+h3 {
+	margin-left: 40px;
+}
+
+.quotes {
+	-webkit-transition: background-color 0.5s linear;
+	-moz-transition: background-color 0.5s linear;
+	-o-transition: background-color 0.5s linear;
+	transition: background-color 0.5s linear;
+	
+	&:hover {
+		background-color: lightcyan;
+		border-radius: 10px;
+	}
+}
+
+.ui-tooltip, .arrow:after {
+    background: lightcyan;
+    border: 2px solid lightcyan;
+    display: none;
+  }
+
+.ui-tooltip {
+	padding: 10px 10px;
+	border-radius: 10px;
+	box-shadow: none;
+	font: 12px "Helvetica Neue", Sans-Serif;
+	width: 15%;
+}
+
+button#quote {
+	position: absolute;
+	left: 30px;
+}
