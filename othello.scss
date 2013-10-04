@@ -1,14 +1,19 @@
+//@import 'reset.css';
 @import 'demo.css';
 @import 'grid';
+
 
 
 //////////
 // GRID //
 //////////
 
+// Specify the number of columns and set column and gutter widths
 $columns: 14;
 $column-width: 60;
 $gutter-width: 20;
+
+// Remove the definition below for a pixel-based layout
 $total-width: 100%;
 
 
@@ -31,14 +36,21 @@ header#top {
 	@include column(4);
 	@include pull (1);
 }
+aside {
+//	@include column(3);
+	display: none;
+}
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 420px) {
 	#maincolumn,
 	#summaries {
 		@include column(12);
 		margin-bottom: 1em;
 	}
 }
+
+
+$blue: #086CA2;
 
 body {
 	margin: 0;
@@ -59,17 +71,18 @@ ol {
 		}
 
 		a {
-			color: darkcyan;
+			color: desaturate($blue, 35%);
 			cursor: pointer;
+			font-weight: bold;
 		}
 
 		span {
 			display: none;
-			background-color: lightcyan;
+			background-color: rgba($blue, .3);
 			float: right;
-			width: 100%;
+			width: 96%;
 			line-height: 29px;
-			padding-left: 10px;
+			padding-left: 21px;
 		}
 	}
 }
@@ -80,10 +93,37 @@ ul {
 
 h1 {
 	margin-top: 0;
+	margin-bottom: 0;
+	padding: 1.5em;
 }
 
 h3 {
 	margin-left: 40px;
+}
+
+p {
+	line-height: 22px;
+}
+
+nav {
+	background-color: darken($blue, 20%);
+	padding-top: 1em;
+	padding-bottom: 1em;
+
+	select {
+		width: 150px;
+		margin: 0 auto;
+		display: block;
+	}
+
+	&.sticky {  
+	    position: fixed;  
+	    width: 100%;  
+	    left: 0;  
+	    top: 0;  
+	    z-index: 100;  
+	    border-top: 0;  
+	}
 }
 
 .quotes {
@@ -91,28 +131,43 @@ h3 {
 	-moz-transition: background-color 0.5s linear;
 	-o-transition: background-color 0.5s linear;
 	transition: background-color 0.5s linear;
-	
+	border-radius: 10px;
+
 	&:hover {
-		background-color: lightcyan;
-		border-radius: 10px;
+		background-color: rgba($blue, .2);
+
+		.tooltip {
+			opacity: 1;
+		}
 	}
 }
 
-.ui-tooltip, .arrow:after {
-    background: lightcyan;
-    border: 2px solid lightcyan;
-    display: none;
-  }
-
-.ui-tooltip {
+.tooltip {
+	-webkit-transition: opacity 0.5s linear;
+	-moz-transition: opacity 0.5s linear;
+	-o-transition: opacity 0.5s linear;
+    	transition: opacity 0.5s linear;
+    	background: rgba(8, 108, 162, 0.2);
+	border: 2px solid rgba(8, 108, 162, 0.2);
 	padding: 10px 10px;
 	border-radius: 10px;
 	box-shadow: none;
 	font: 12px "Helvetica Neue", Sans-Serif;
-	width: 15%;
+	width: 37%;
+	position: relative;
+	right: 603px;
+	bottom: 77px;
+	opacity: 0;
+	float: right;
+}
+
+button#summaryClose {
+	float: right;
 }
 
 button#quote {
 	position: absolute;
 	left: 30px;
 }
+
+
